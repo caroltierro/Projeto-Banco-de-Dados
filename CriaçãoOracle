@@ -1,0 +1,142 @@
+////////CREATE TABLE//////////
+CREATE TABLE CURSO_ALUNO (
+Curso_ID_Curso NUMBER CONSTRAINT nnCursoIDAluno NOT NULL,
+Aluno_ID_aluno NUMBER CONSTRAINT nnAlunoIDAluno NOT NULL
+)
+
+CREATE TABLE CURSO (
+ID_curso NUMBER CONSTRAINT nnIdcurso NOT NULL CONSTRAINT PK_IDCurso PRIMARY KEY,
+Nome_Curso VARCHAR (45) CONSTRAINT nnNomeCurso NOT NULL,
+Professor_ID_professor NUMBER CONSTRAINT nnProfessorIDProfessor NOT NULL
+)
+
+CREATE TABLE ALUNO (
+ID_aluno NUMBER CONSTRAINT nnIDAluno NOT NULL CONSTRAINT PK_IDAluno PRIMARY KEY, 
+Nome_Aluno VARCHAR (45) CONSTRAINT nnNomeAluno NOT NULL,
+Email_Aluno VARCHAR (45) CONSTRAINT nnEmailAluno NOT NULL,
+CPF_Aluno NUMBER CONSTRAINT nnCPFAluno NOT NULL,
+Endereco_Aluno VARCHAR (45) CONSTRAINT nnEnderecoAluno NOT NULL,
+Numero_Aluno NUMBER CONSTRAINT nnNumeroAluno NOT NULL,
+Complemento_Aluno VARCHAR (45) CONSTRAINT nnComplementoAluno NOT NULL,
+Cidade_Aluno VARCHAR (45) CONSTRAINT nnCidadeAluno NOT NULL,
+Estado_Aluno VARCHAR (45) CONSTRAINT nnEstadoAluno NOT NULL
+)
+
+CREATE TABLE PROFESSOR (
+ID_Professor NUMBER CONSTRAINT nnIDProfessor NOT NULL CONSTRAINT PK_IDProfessor PRIMARY KEY,
+Nome_Professor VARCHAR (45) CONSTRAINT nnNomeProfessor NOT NULL,
+Email_Professor VARCHAR (45) CONSTRAINT nnEmailProfessor NOT NULL,
+CPF_Professor NUMBER CONSTRAINT nnCPFProfessor NOT NULL,
+Endereco_Professor VARCHAR (45) CONSTRAINT nnEnderecoProfessor NOT NULL,
+Numero_Professor NUMBER CONSTRAINT nnNumero_professor NOT NULL,
+Complemento_Professor VARCHAR (45) CONSTRAINT nnComplementoProfessor NOT NULL,
+Cidade_Professor VARCHAR (45) CONSTRAINT nnCidadeProfessor NOT NULL,
+Estado_Professor VARCHAR (45) CONSTRAINT nnEstadoProfessor NOT NULL
+)
+ALTER TABLE CURSO_ALUNO ADD CONSTRAINT FK_IDCursoCurso FOREIGN KEY (Curso_ID_Curso) REFERENCES CURSO (ID_Curso)
+ALTER TABLE CURSO_ALUNO ADD CONSTRAINT FK_IDAlunoALuno FOREIGN KEY (Aluno_ID_ALuno) REFERENCES ALUNO (ID_Aluno) 
+ALTER TABLE CURSO ADD CONSTRAINT FK_IDProfessorProfessor FOREIGN KEY (Professor_ID_Professor) REFERENCES PROFESSOR (ID_Professor)
+////////CREATE TABLE//////////
+
+
+////////INSERT SEQUENCE//////////
+CREATE SEQUENCE SEQUENCE_ALUNO_ID_ALUNO 
+START WITH 1 
+INCREMENT BY 1;
+CREATE SEQUENCE SEQUENCE_PROFESSOR_ID_PROFESSOR
+START WITH 1 
+INCREMENT BY 1;
+CREATE SEQUENCE SEQUENCE_CURSO_ID_CURSO
+START WITH 1 
+INCREMENT BY 1;
+////////INSERT SEQUENCE//////////
+
+
+////////INSERT CREATE INDEX//////////
+CREATE INDEX IDX_ALUNO ON ALUNO (Nome_Aluno);
+CREATE INDEX IDX_ALUNO_CPF ON ALUNO (CPF_Aluno);
+CREATE INDEX IDX_ALUNO_CIDADE ON ALUNO (Cidade_Aluno);
+CREATE INDEX IDX_PROFESSOR_NOME ON PROFESSOR (Nome_Professor);
+CREATE INDEX IDX_PROFESSOR_CPF ON PROFESSOR (CPF_Professor);
+CREATE INDEX IDX_PROFESSOR_CIDADE ON PROFESSOR (Cidade_Professor);
+CREATE INDEX IDX_CURSO_NOME ON CURSO (Nome_curso);
+CREATE INDEX IDX_CURSO_IDPROF ON CURSO (Professor_ID_Professor);
+CREATE INDEX IDX_CURSO_IDCURSO ON CURSO_ALUNO (Curso_ID_Curso);
+CREATE INDEX IDX_CURSO_IDALUNO ON CURSO_ALUNO (Aluno_ID_Aluno);
+////////INSERT CREATE INDEX//////////
+
+
+////////INSERT ALUNO//////////
+INSERT INTO ALUNO
+(ID_Aluno, Nome_Aluno, Email_Aluno, CPF_Aluno, Endereco_Aluno, Numero_Aluno, Complemento_Aluno, Cidade_Aluno, Estado_Aluno) VALUES (SEQUENCE_ALUNO_ID_ALUNO.NEXTVAL , 'Ana Silva', 'ana.silva@email.com', 12345678901, 'Rua A', 123, 'Ap 101', 'São Paulo', 'SP');
+INSERT INTO ALUNO
+(ID_Aluno, Nome_Aluno, Email_Aluno, CPF_Aluno, Endereco_Aluno, Numero_Aluno, Complemento_Aluno, Cidade_Aluno, Estado_Aluno) VALUES (SEQUENCE_ALUNO_ID_ALUNO.NEXTVAL, 'João Santos', 'joao.santos@email.com', 789012345671, 'Avenida B', 456, 'Casa 2', 'Rio de Janeiro', 'RJ')
+INSERT INTO ALUNO
+(ID_Aluno, Nome_Aluno, Email_Aluno, CPF_Aluno, Endereco_Aluno, Numero_Aluno, Complemento_Aluno, Cidade_Aluno, Estado_Aluno) VALUES (SEQUENCE_ALUNO_ID_ALUNO.NEXTVAL, 'Maria Oliveira', 'maria.oliveira@email.com', 34567890123, 'Travessa C', 789, 'Bloco 3', 'Belo Horizonte', 'MG')
+INSERT INTO ALUNO
+(ID_Aluno, Nome_Aluno, Email_Aluno, CPF_Aluno, Endereco_Aluno, Numero_Aluno, Complemento_Aluno, Cidade_Aluno, Estado_Aluno) VALUES (SEQUENCE_ALUNO_ID_ALUNO.NEXTVAL, 'Pedro Costa', 'pedro.costa@email.com', 90123456789, 'Alameda D', 1010, 'Loja 4', 'Brasília', 'DF')
+INSERT INTO ALUNO
+(ID_Aluno, Nome_Aluno, Email_Aluno, CPF_Aluno, Endereco_Aluno, Numero_Aluno, Complemento_Aluno, Cidade_Aluno, Estado_Aluno) VALUES (SEQUENCE_ALUNO_ID_ALUNO.NEXTVAL, 'Luana Pereira', 'luana.pereira@email.com', 56789012345, 'Rua E', 555, 'Sala 5', 'Salvador', 'BA')
+SELECT * FROM ALUNO
+INSERT INTO ALUNO
+(ID_Aluno, Nome_Aluno, Email_Aluno, CPF_Aluno, Endereco_Aluno, Numero_Aluno, Complemento_Aluno, Cidade_Aluno, Estado_Aluno) VALUES (SEQUENCE_ALUNO_ID_ALUNO.NEXTVAL, 'Carlos Rodrigues', 'carlos.rodrigues@email.com', 23456789012, 'Avenida F', 222, 'Apartamento 6', 'Recife', 'PE')
+INSERT INTO ALUNO
+(ID_Aluno, Nome_Aluno, Email_Aluno, CPF_Aluno, Endereco_Aluno, Numero_Aluno, Complemento_Aluno, Cidade_Aluno, Estado_Aluno) VALUES (SEQUENCE_ALUNO_ID_ALUNO.NEXTVAL, 'Camila Almeida', 'camila.almeida@email.com', 89012345678, 'Rua G', 777, 'Casa 7', 'Curitiba', 'PR')
+INSERT INTO ALUNO
+(ID_Aluno, Nome_Aluno, Email_Aluno, CPF_Aluno, Endereco_Aluno, Numero_Aluno, Complemento_Aluno, Cidade_Aluno, Estado_Aluno) VALUES (SEQUENCE_ALUNO_ID_ALUNO.NEXTVAL, 'Rafael Souza', 'rafael.souza@email.com', 45678901234, 'Travessa H', 333, 'Bloco 8', 'Fortaleza', 'CE')
+INSERT INTO ALUNO
+(ID_Aluno, Nome_Aluno, Email_Aluno, CPF_Aluno, Endereco_Aluno, Numero_Aluno, Complemento_Aluno, Cidade_Aluno, Estado_Aluno) VALUES (SEQUENCE_ALUNO_ID_ALUNO.NEXTVAL, 'Paula Lima', 'paula.lima@email.com', 11223344556, 'Avenida I', 999, 'Apartamento 9', 'Porto Alegre', 'RS')
+INSERT INTO ALUNO
+(ID_Aluno, Nome_Aluno, Email_Aluno, CPF_Aluno, Endereco_Aluno, Numero_Aluno, Complemento_Aluno, Cidade_Aluno, Estado_Aluno) VALUES (SEQUENCE_ALUNO_ID_ALUNO.NEXTVAL, 'Diego Ferreira', 'diego.ferreira@email.com', 44556677889, 'Rua J', 888, 'Casa 10', 'Belém', 'PA')
+////////INSERT ALUNO//////////
+
+
+////////INSERT PROFESSOR//////////
+INSERT INTO PROFESSOR
+(ID_Professor, Nome_Professor, Email_Professor, CPF_Professor, Endereco_Professor, Numero_Professor, Complemento_Professor, Cidade_Professor, Estado_Professor) VALUES (SEQUENCE_PROFESSOR_ID_PROFESSOR.NEXTVAL, 'Laura Mendes', 'laura.mendes@email.com', 12345678900, 'Rua X', 456, 'Apt 301', 'Porto Alegre', 'RS')
+INSERT INTO PROFESSOR
+(ID_Professor, Nome_Professor, Email_Professor, CPF_Professor, Endereco_Professor, Numero_Professor, Complemento_Professor, Cidade_Professor, Estado_Professor) VALUES (SEQUENCE_PROFESSOR_ID_PROFESSOR.NEXTVAL, 'Felipe Carvalho', 'felipe.carvalho@email.com', 98765432111, 'Avenida Y', 789, 'Casa 5', 'Belo Horizonte', 'MG')
+INSERT INTO PROFESSOR
+(ID_Professor, Nome_Professor, Email_Professor, CPF_Professor, Endereco_Professor, Numero_Professor, Complemento_Professor, Cidade_Professor, Estado_Professor) VALUES (SEQUENCE_PROFESSOR_ID_PROFESSOR.NEXTVAL, 'Isabella Santos', 'isabella.santos@email.com', 45612378922, 'Travessa Z', 123, 'Bloco B', 'Recife', 'PE')
+INSERT INTO PROFESSOR
+(ID_Professor, Nome_Professor, Email_Professor, CPF_Professor, Endereco_Professor, Numero_Professor, Complemento_Professor, Cidade_Professor, Estado_Professor) VALUES (SEQUENCE_PROFESSOR_ID_PROFESSOR.NEXTVAL, 'Lucas Silva', 'lucas.silva@email.com', 32165498733, 'Alameda W', 987, 'Loja 7', 'Curitiba', 'PR')
+INSERT INTO PROFESSOR
+(ID_Professor, Nome_Professor, Email_Professor, CPF_Professor, Endereco_Professor, Numero_Professor, Complemento_Professor, Cidade_Professor, Estado_Professor) VALUES (SEQUENCE_PROFESSOR_ID_PROFESSOR.NEXTVAL, 'Gabriela Oliveira', 'gabriela.oliveira@email.com', 78912345644, 'Rua V', 654, 'Sala 9', 'Fortaleza', 'CE')
+INSERT INTO PROFESSOR
+(ID_Professor, Nome_Professor, Email_Professor, CPF_Professor, Endereco_Professor, Numero_Professor, Complemento_Professor, Cidade_Professor, Estado_Professor) VALUES (SEQUENCE_PROFESSOR_ID_PROFESSOR.NEXTVAL, 'Matheus Costa', 'matheus.costa@email.com', 65498732155, 'Avenida U', 321, 'Apartamento 12', 'Manaus', 'AM')
+INSERT INTO PROFESSOR
+(ID_Professor, Nome_Professor, Email_Professor, CPF_Professor, Endereco_Professor, Numero_Professor, Complemento_Professor, Cidade_Professor, Estado_Professor) VALUES (SEQUENCE_PROFESSOR_ID_PROFESSOR.NEXTVAL, 'Sophia Pereira', 'sophia.pereira@email.com', 23456789066, 'Rua T', 876, 'Casa 14', 'Florianópolis', 'SC')
+INSERT INTO PROFESSOR
+(ID_Professor, Nome_Professor, Email_Professor, CPF_Professor, Endereco_Professor, Numero_Professor, Complemento_Professor, Cidade_Professor, Estado_Professor) VALUES (SEQUENCE_PROFESSOR_ID_PROFESSOR.NEXTVAL, 'Enzo Rodrigues', 'enzo.rodrigues@email.com', 87654321077, 'Travessa S', 345, 'Bloco 22', 'Natal', 'RN')
+INSERT INTO PROFESSOR
+(ID_Professor, Nome_Professor, Email_Professor, CPF_Professor, Endereco_Professor, Numero_Professor, Complemento_Professor, Cidade_Professor, Estado_Professor) VALUES (SEQUENCE_PROFESSOR_ID_PROFESSOR.NEXTVAL, 'Valentina Almeida', 'valentina.almeida@email.com', 34567890188, 'Avenida R', 210, 'Apartamento 33', 'Goiânia', 'GO')
+INSERT INTO PROFESSOR
+(ID_Professor, Nome_Professor, Email_Professor, CPF_Professor, Endereco_Professor, Numero_Professor, Complemento_Professor, Cidade_Professor, Estado_Professor) VALUES (SEQUENCE_PROFESSOR_ID_PROFESSOR.NEXTVAL, 'Noah Souza', 'noah.souza@email.com', 21098765499, 'Rua Q', 999, 'Loja 1', 'João Pessoa', 'PB')
+////////INSERT PROFESSOR//////////
+
+////////INSERT CURSO//////////
+INSERT INTO CURSO (ID_curso, Nome_Curso, Professor_ID_professor) VALUES (SEQUENCE_CURSO_ID_CURSO.NEXTVAL, 'Matemática Avançada', 2)
+INSERT INTO CURSO (ID_curso, Nome_Curso, Professor_ID_professor) VALUES (SEQUENCE_CURSO_ID_CURSO.NEXTVAL, 'Ciência da Computação', 3)
+INSERT INTO CURSO (ID_curso, Nome_Curso, Professor_ID_professor) VALUES (SEQUENCE_CURSO_ID_CURSO.NEXTVAL, 'Literatura Mundial', 4)
+INSERT INTO CURSO (ID_curso, Nome_Curso, Professor_ID_professor) VALUES (SEQUENCE_CURSO_ID_CURSO.NEXTVAL, 'Biologia Marinha', 5)
+INSERT INTO CURSO (ID_curso, Nome_Curso, Professor_ID_professor) VALUES (SEQUENCE_CURSO_ID_CURSO.NEXTVAL, 'Economia Global', 6)
+INSERT INTO CURSO (ID_curso, Nome_Curso, Professor_ID_professor) VALUES (SEQUENCE_CURSO_ID_CURSO.NEXTVAL, 'História da Arte', 7)
+INSERT INTO CURSO (ID_curso, Nome_Curso, Professor_ID_professor) VALUES (SEQUENCE_CURSO_ID_CURSO.NEXTVAL, 'Física Quântica', 8)
+INSERT INTO CURSO (ID_curso, Nome_Curso, Professor_ID_professor) VALUES (SEQUENCE_CURSO_ID_CURSO.NEXTVAL, 'Psicologia Aplicada', 9)
+INSERT INTO CURSO (ID_curso, Nome_Curso, Professor_ID_professor) VALUES (SEQUENCE_CURSO_ID_CURSO.NEXTVAL, 'Engenharia Civil', 10)
+INSERT INTO CURSO (ID_curso, Nome_Curso, Professor_ID_professor) VALUES (SEQUENCE_CURSO_ID_CURSO.NEXTVAL, 'Marketing Digital', 11)
+////////INSERT CURSO//////////
+
+
+////////INSERT CURSO_ALUNO//////////
+INSERT INTO CURSO_ALUNO (Curso_ID_Curso, Aluno_ID_aluno) VALUES (1, 1)
+INSERT INTO CURSO_ALUNO (Curso_ID_Curso, Aluno_ID_aluno) VALUES (2, 2)
+INSERT INTO CURSO_ALUNO (Curso_ID_Curso, Aluno_ID_aluno) VALUES (3, 3)
+INSERT INTO CURSO_ALUNO (Curso_ID_Curso, Aluno_ID_aluno) VALUES (4, 4)
+INSERT INTO CURSO_ALUNO (Curso_ID_Curso, Aluno_ID_aluno) VALUES (5, 5)
+INSERT INTO CURSO_ALUNO (Curso_ID_Curso, Aluno_ID_aluno) VALUES (6, 9)
+INSERT INTO CURSO_ALUNO (Curso_ID_Curso, Aluno_ID_aluno) VALUES (7, 10)
+INSERT INTO CURSO_ALUNO (Curso_ID_Curso, Aluno_ID_aluno) VALUES (8, 11)
+INSERT INTO CURSO_ALUNO (Curso_ID_Curso, Aluno_ID_aluno) VALUES (9, 12)
+INSERT INTO CURSO_ALUNO (Curso_ID_Curso, Aluno_ID_aluno) VALUES (10, 13)
+////////INSERT CURSO_ALUNO//////////
